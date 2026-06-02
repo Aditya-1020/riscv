@@ -1,0 +1,7 @@
+aditya_riscv/
+docs/
+.vscode/
+*.log
+*.vcd
+src/
+riscv-spec.pdf

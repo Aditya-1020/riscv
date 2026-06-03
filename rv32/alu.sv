@@ -10,7 +10,8 @@ module alu (
     output logic o_invalid_op,
     output logic o_overflow,
     output logic o_carry,
-    output logic o_borrow
+    output logic o_borrow,
+    output logic o_alu_neg
 );
     localparam int SHAMT_WIDTH = $clog2(XLEN);
 
@@ -65,5 +66,6 @@ module alu (
 
     assign o_result = result_r;
     assign o_zero = ~|result_r; // all bits 0
+    assign o_alu_neg = result_r[XLEN-1];
 
 endmodule

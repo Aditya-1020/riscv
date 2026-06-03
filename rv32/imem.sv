@@ -1,7 +1,6 @@
 // L1 cache for instruction memory
 import riscv_pkg::*;
 
-
 module imem (
     input  logic i_clk,
     // CPU fetch
@@ -11,7 +10,7 @@ module imem (
     output logic o_cpu_hit,
 
     // Cache fill from main memory
-    input  logic        i_fill_valid,
+    input  logic i_fill_valid,
     input  logic [XLEN-1:0] i_fill_addr,
     input  logic [XLEN-1:0] i_fill_data
 );
@@ -52,7 +51,7 @@ module imem (
 
     sram_1rw1r_32x512 u_data_ram (
         .i_clk0   (i_clk),
-        .i_csb0    (i_fill_valid),   // active-high, wrapper inverts
+        .i_csb0    (i_fill_valid),
         .i_we0    (1'b1),           // when selected, always write
         .i_wmask0 (4'b1111),
         .i_addr0  (fill_index),
@@ -67,7 +66,7 @@ module imem (
 
     sram_1rw1r_32x512 u_tag_ram (
         .i_clk0   (i_clk),
-        .i_csb0    (i_fill_valid),   // active-high, wrapper inverts
+        .i_csb0    (i_fill_valid),
         .i_we0    (1'b1),           // when selected, always write
         .i_wmask0 (4'b1111),
         .i_addr0  (fill_index),

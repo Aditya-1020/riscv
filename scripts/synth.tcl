@@ -5,7 +5,7 @@ set sources [split $::env(VERILOG_SOURCES) " "]
 
 foreach src $sources {
     puts "Reading source: $src"
-    read_verilog $src
+    read_verilog -sv $src
 }
 
 hierarchy -check -top $top_module
